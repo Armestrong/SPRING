@@ -2,8 +2,6 @@ package br.com.fiap.exemplo05.controller;
 
 import br.com.fiap.exemplo05.entity.Produto;
 import br.com.fiap.exemplo05.view.ProdutoRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,25 +84,25 @@ public class ProdutoController {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-  /*
-    /* PESQUISAR  POR PREÇO MAIOR QUE
-    @GetMapping("churris")
+
+    /** PESQUISAR  POR PREÇO MAIOR QUE ..**/
+    @GetMapping("bpreco")
     public String buscarPorPrecoMaiorQue(){
        return "buscar";
     }
 
-    @PostMapping("churris")
+    @PostMapping("bpreco")
     public String buscarPorPrecoMaiorQue(double preco, Model model){
-       List<Produto> produtos = repository.findByPrecoMaiorQue(preco);
+       List<Produto> produtos = repository.findByPrecoGreaterThan(preco);
        model.addAttribute("prod",produtos);
        return  "resultado";
     }
-    */
+
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-    /** PESQUISAR NOVO POR ORDER BY DESC (DESC) **/
+    /** BUSCAR PRODUTOS NOVOS E ORDENALOS POR NOME EM ORDEM DESC  **/
 
     @GetMapping("borderbynovo")
     public String buscarPorNovoOrderByDesc()
@@ -122,7 +120,7 @@ public class ProdutoController {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-    /**  buscarPorNomeIgnoreCase **/
+    /**  BUSCAR NOMES E ORDENALOS POR PREÇO EM ORDEM ASC (IGNORANDO CAIXA BAIXA OU ALTA)  **/
 
     @GetMapping("bnomeignorecase")
     public String buscarPorNomeIgnoreCaseOrderByPrecoAsc()

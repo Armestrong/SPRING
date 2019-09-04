@@ -11,8 +11,8 @@ public interface ProdutoRepository
     List<Produto> findByNome(String nome);
     List<Produto> findByCodigo(int codigo);
     List<Produto> findByNomeAndNovo(String nome, boolean novo);
-   // List<Produto> findByPrecoMaiorQue(double preco);
+    List<Produto> findByPrecoGreaterThan(double preco);
     List<Produto> findByNovoOrderByNomeDesc(boolean novo);
     List<Produto> findByNomeIgnoreCaseOrderByPrecoAsc(String nome);
-
+    /**List<Produto> findByDataFabricacaoBetween(LocalDate i, LocalDate f);**/
 }

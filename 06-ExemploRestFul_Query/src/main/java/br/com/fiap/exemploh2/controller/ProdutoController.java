@@ -54,9 +54,13 @@ public class ProdutoController {
        return nome!=null?
                repository.findByNomeAndNovo(nome,novo):
                repository.findByNovo(novo);
+
       // http://localhost:8080/produto/pesquisa?nome=Tenis&novo=false
     }
+
+
 ///////////////////////////////////////////////////////////////////////////////
+
   /*  @GetMapping("pesquisa")
     public List<Produto> buscar(@RequestParam(required = false) String nome){
         return repository.findByNome(nome);
