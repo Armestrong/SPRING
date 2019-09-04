@@ -7,10 +7,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +19,9 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
-    /* CADASTRAR */
+////////////////////////////////////////////////////////////////////////////////////////
+
+    /** CADASTRAR **/
     @GetMapping("cadastrar")
     public String cadastrar() {
         return "cadastrar";
@@ -35,7 +34,11 @@ public class ProdutoController {
         return "sucesso";
     }
 
-    /* PESQUISAR  POR NOME*/
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+    /** PESQUISAR  POR NOME**/
+
    @GetMapping("bnome")
     public String buscarPorNome(){
         return "buscar";
@@ -48,6 +51,10 @@ public class ProdutoController {
         return "resultado";
     }
 
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+    /** PESQUISAR  POR CODIGO **/
     @GetMapping("bcd")
     public String buscarPorCodigo(){
 
@@ -61,6 +68,10 @@ public class ProdutoController {
         return "resultado";
     }
 
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+    /** PESQUISAR  POR PRODUTO NOVO E NOME **/
     @GetMapping("bnomeenovo")
     public String buscarPorNomeAndNovo(){
        return "buscar";
@@ -73,19 +84,60 @@ public class ProdutoController {
        return "resultado";
     }
 
-    @GetMapping()
+
+////////////////////////////////////////////////////////////////////////////////////////
+  /*
+    /* PESQUISAR  POR PREÇO MAIOR QUE
+    @GetMapping("churris")
     public String buscarPorPrecoMaiorQue(){
        return "buscar";
     }
 
-    @PostMapping()
+    @PostMapping("churris")
     public String buscarPorPrecoMaiorQue(double preco, Model model){
-       List<Produto> produtos = repository.fingByPrecoMaiorQue(preco);
+       List<Produto> produtos = repository.findByPrecoMaiorQue(preco);
        model.addAttribute("prod",produtos);
        return  "resultado";
     }
+    */
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////
+    /** PESQUISAR NOVO POR ORDER BY DESC (DESC) **/
+
+    @GetMapping("borderbynovo")
+    public String buscarPorNovoOrderByDesc()
+    {
+        return "buscar";
+    }
+
+    @PostMapping("borderbynovo")
+    public String buscarPorNovoOrderByDesc(boolean novo, Model model){
+        List<Produto> produtos = repository.findByNovoOrderByNomeDesc(novo);
+        model.addAttribute("prod",produtos);
+        return  "resultado";
+    }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+    /**  buscarPorNomeIgnoreCase **/
+
+    @GetMapping("bnomeignorecase")
+    public String buscarPorNomeIgnoreCaseOrderByPrecoAsc()
+    {
+        return "buscar";
+    }
+
+    @PostMapping("bnomeignorecase")
+    public String buscarPorNomeIgnoreCaseOrderByPrecoAsc(String nome, Model model){
+        List<Produto> produtos = repository.findByNomeIgnoreCaseOrderByPrecoAsc(nome);
+        model.addAttribute("prod",produtos);
+        return  "resultado";
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 
 }
