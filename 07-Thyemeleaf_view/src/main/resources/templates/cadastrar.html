@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Cadastrar</title>
+</head>
+<body>
+<form action="cadastrar" method="post">
+    <input type="text" name="nome" placeholder="Digite o nome"/>
+    <input type="text" name="preco" placeholder="Digite o preço"/>
+    <input type="submit" value="Salvar">
+
+</form>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

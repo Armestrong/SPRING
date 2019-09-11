@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>BUSCAR</title>
+</head>
+<body>
+<h3>busque por nome</h3>
+<form action="bnome" method="post">
+    <input type="text" name="nome" placeholder="digite o nome">
+    <input type="submit" value="Buscar">
+</form>
+
+<h3>busque por codigo</h3>
+<form action="bcd" method="post">
+    <input type="text" name="codigo" placeholder="digite o codigo">
+    <input type="submit" value="Buscar">
+</form>
+
+<h3>busque por Nome e Novo</h3>
+<form action="bnomeenovo" method="post">
+    <input type="text" name="nome" placeholder="digite o nome">
+    <input type="text" name="novo" placeholder="digite se é novo">
+    <input type="submit" value="Buscar">
+</form>
+
+<h3>busque produtos novos por nome em ordem desc </h3>
+<form action="borderbynovo" method="post">
+    <input type="text" name="novo" placeholder="digite se é novo">
+    <input type="submit" value="Buscar">
+</form>
+
+<h3>busque nomes e ordenalos por preço em ordem asc</h3>
+<form action="bnomeignorecase" method="post">
+    <input type="text" name="nome" placeholder="digite o nome">
+    <input type="submit" value="Buscar">
+</form>
+
+
+<h3>busque por preços maiores que .. </h3>
+<form action="bpreco" method="post">
+    <input type="text" name="preco" placeholder="digite o preco">
+    <input type="submit" value="Buscar">
+</form>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>RESULTADOS</title>
+</head>
+<body>
+
+<tr th:each="produto: ${prod}">
+    <td th:text ="${produto.nome}"/>
+    <td th:text ="${produto.preco}"/>
+    <td th:text ="${produto.novo}"/>
+    <td th:text ="${produto.dataFabricacao}"/>
+</tr>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
