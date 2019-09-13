@@ -17,19 +17,39 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
+
+    @GetMapping("editar/{id}")
+    public String editar(@PathVariable("id") int codigo, Model model){
+        model.addAttribute("prod",repository.findById(codigo));
+        return "cadastrar";
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+    @GetMapping("listar")
+    public String listarProdutos(Model model){
+        model.addAttribute("prod", repository.findAll());
+        return "resultado";
+    }
+
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
     /** CADASTRAR **/
     @GetMapping("cadastrar")
-    public String cadastrar() {
+    public String cadastrar(Produto produto,Model model)
+    {
+        model.addAttribute("prod",produto);
         return "cadastrar";
     }
 
     @PostMapping("cadastrar")
-    public String processarForm(Produto produto) {
+    public String processarForm(Produto produto,Model model) {
+
+        model.addAttribute("prod",produto);
         repository.save(produto);
-        //model.addAttribute("produto",produto);
-        return "sucesso";
+        return "redirect:/produto/listar";
     }
 
 

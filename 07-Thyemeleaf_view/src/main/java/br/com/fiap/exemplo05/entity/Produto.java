@@ -1,5 +1,7 @@
 package br.com.fiap.exemplo05.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,6 +14,8 @@ public class Produto {
     private String nome;
     private double preco;
     private boolean novo;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFabricacao;
 
     public int getCodigo() {

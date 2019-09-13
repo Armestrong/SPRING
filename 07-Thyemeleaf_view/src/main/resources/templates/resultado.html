@@ -1,18 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:t="http://www.w3.org/1999/html">
 <head>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>RESULTADOS</title>
 </head>
 <body>
-
-<tr th:each="produto: ${prod}">
-    <td th:text ="${produto.nome}"/>
-    <td th:text ="${produto.preco}"/>
-    <td th:text ="${produto.novo}"/>
-    <td th:text ="${produto.dataFabricacao}"/>
+<table class="table">
+<tr>
+    <th>NOME</th>
+    <th>PRECO</th>
+    <th>DATA FABRICACAO</th>
+    <th>NOVO</th>
+    <th></th>
 </tr>
+
+
+    <tr th:each="prode:${prod}">
+        <td th:text="${prode.nome}"></td>
+        <td th:text="${#numbers.formatDecimal(prode.preco, 1, 2)}"></td>
+        <td th:text="${#temporals.format(prode.dataFabricacao, 'dd/MM/yyyy')}"></td>
+        <td th:text="${prode.novo?'Sim':'Não'}"></td>
+        <td>
+            <a th:href="@{/produto/editar/}+${prode.codigo}" class="btn
+btn-outline-primary">Editar</a>
+        </td>
+    </tr>
+
+</tr>
+</table>
+
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
